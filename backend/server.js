@@ -1,26 +1,24 @@
 /**
- * @name Hotel Room Booking System
- * @author Md. Samiur Rahman (Mukul)
- * @description Hotel Room Booking and Management System Software ~ Developed By Md. Samiur Rahman (Mukul)
- * @copyright ©2023 ― Md. Samiur Rahman (Mukul). All rights reserved.
- * @version v0.0.1
- *
- */
-
-/*
- * Name: Hotel Room Booking System ~ Backed
- * Description: Build an Hotel Room Booking System using node.js, express.js application from the scratch
+ * Hotel Room Booking System - Backend Server
  * Author: Md. Samiur Rahman (Mukul)
- * Last Modified: 26/02/2023
- * Version: v0.0.1
- *
+ * Fixed & configured for Windows by ChatGPT
  */
 
-// imports modules & dependencies
-const app = require('./src/app');
-const logger = require('./src/middleware/winston.logger');
+require("dotenv").config(); // ✅ WAJIB PALING ATAS
 
-// app listens to .env defined port
-app.listen(process.env.APP_PORT, () => {
-  logger.info(`App server running on: ${process.env.APP_BASE_URL}`);
+const app = require("./src/app");
+const logger = require("./src/middleware/winston.logger");
+
+// ===============================
+// SERVER START
+// ===============================
+const PORT = process.env.APP_PORT || 5000;
+const BASE_URL = process.env.APP_BASE_URL || `http://localhost:${PORT}`;
+
+app.listen(PORT, () => {
+  logger.info("====================================");
+  logger.info("🚀 Hotel Room Booking Backend Started");
+  logger.info(`🌐 Server running on: ${BASE_URL}`);
+  logger.info(`⚙️ Environment: ${process.env.NODE_ENV}`);
+  logger.info("====================================");
 });
